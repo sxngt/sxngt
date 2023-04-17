@@ -7,4 +7,4 @@
   <img src="https://github-readme-stats.vercel.app/api?username=ysh8614&theme=tokyonight&show_icons=true" width="42%" />
 </a>
 
-[![Ashutosh's github activity graph](https://activity-graph.herokuapp.com/graph?username=ysh8614&theme=nord)](https://github.com/ashutosh00710/github-readme-activity-graph)
+[![Ashutosh's github activity graph](https://github-readme-activity-graph.cyclic.app/graph?username=ysh8614&theme=dracula)](https://github.com/ashutosh00710/github-readme-activity-graph)
