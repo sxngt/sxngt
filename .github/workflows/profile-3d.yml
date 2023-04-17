@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     name: generate-github-profile-3d-contrib
     steps:
-      - uses: actions/checkout@v2
-      - uses: yoshi389111/github-profile-3d-contrib@0.6.0
+      - uses: actions/checkout@v3
+      - uses: yoshi389111/github-profile-3d-contrib@0.7.1
         env:
-          GITHUB_TOKEN: $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
-          USERNAME: $ysh8614
+          GITHUB_TOKEN: ${{ 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 }}
+          USERNAME: ${{ ysh8614 }}
       - name: Commit & Push
         run: |
           git config user.name github-actions
