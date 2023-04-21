@@ -4,15 +4,15 @@
   <div align=left>
   
 ## PROJECT & ACTIVITY
-전 ARSS - MSC (MPTCP Service Commercialization) 개발자
-인프런 Tensorflow 톺아보기 Season1 - 강사
-현 INJE Medical LAB - ML Ops 엔지니어
+전 ARSS - MSC (MPTCP Service Commercialization) 개발자<br>
+인프런 Tensorflow 톺아보기 Season1 - 강사<br>
+현 INJE Medical LAB - ML Ops 엔지니어<br><br><br>
 
 ## Papers
-코로나 관련 SNS 크롤링 - NLP 토픽 모델링, 감성분석 논문 작성
-코로나 블루 - 비만관련 키워드에 대한 자연어 분석 논문 작성 튜터링
-치매 조기탐지 CV 활용 연구 전망 수집 연구
-BERT 활용 한국어 감성분석 특허 출원
+코로나 관련 SNS 크롤링 - NLP 토픽 모델링, 감성분석 논문 작성<br>
+코로나 블루 - 비만관련 키워드에 대한 자연어 분석 논문 작성 튜터링<br>
+치매 조기탐지 CV 활용 연구 전망 수집 연구<br>
+BERT 활용 한국어 감성분석 특허 출원<br>
 
 
 
