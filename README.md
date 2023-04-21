@@ -4,7 +4,18 @@
   <div align=left>
   
 ## PROJECT & ACTIVITY
-  
+전 ARSS - MSC (MPTCP Service Commercialization) 개발자
+인프런 Tensorflow 톺아보기 Season1 - 강사
+현 INJE Medical LAB - ML Ops 엔지니어
+
+## Papers
+코로나 관련 SNS 크롤링 - NLP 토픽 모델링, 감성분석 논문 작성
+코로나 블루 - 비만관련 키워드에 대한 자연어 분석 논문 작성 튜터링
+치매 조기탐지 CV 활용 연구 전망 수집 연구
+BERT 활용 한국어 감성분석 특허 출원
+
+
+
 ## 💪 Skills
 ### Language
 <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
