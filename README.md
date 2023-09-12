@@ -6,7 +6,7 @@
 ## PROJECT & ACTIVITY
 전 ARSS - MSC (MPTCP Service Commercialization) 개발자<br>
 인프런 Tensorflow 톺아보기 Season1 - 강사<br>
-현 INJE Medical LAB - ML Ops 엔지니어<br><br><br>
+전 INJE Medical LAB - 연구원<br><br><br>
 
 ## Papers
 코로나 관련 SNS 크롤링 - NLP 토픽 모델링, 감성분석 논문 작성<br>
