@@ -19,7 +19,7 @@ BERT 활용 한국어 감성분석 특허 출원<br>
 ## 💪 Skills
 ### Language
 <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
-<img src="https://img.shields.io/badge/Haskell-5D4F85?style=for-the-badge&logo=Haskell&logoColor=white">
+<img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=Rust&logoColor=white">
 
   
 ### Library and FrameWork
