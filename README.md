@@ -40,7 +40,7 @@ BERT 활용 한국어 감성분석 특허 출원<br>
 ## CARDS
     
   [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ysh8614&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
-  [![Solved.ac 프로필]  <a href="https://solved.ac/profile/injefol"><img src="https://github-readme-solvedac-hyp3rflow.vercel.app/api/?handle=injefol"/></a>
+  <a href="https://solved.ac/profile/injefol"><img src="https://github-readme-solvedac-hyp3rflow.vercel.app/api/?handle=injefol"/></a>
                                                  
 <br><br>
 
