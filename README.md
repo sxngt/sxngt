@@ -22,7 +22,7 @@ type sxngt struct {
 	Email         Email
 	Threads       Threads
 	LinkedIn      LinkedIn
-  Language      []Language
+        Language      []Language
 	TechStack     []Technology
 	Student       School
 }
@@ -32,15 +32,15 @@ func (s *sxngt NewSxngt() *sxngt {
 		GitHub:    GitHub{ "sxngt" },
 		Email: 	   Email{ "sxngt@icloud.com" },
 		Threads:   Threads{ "sang._.hn" },
-    Language;  []Language {
-                 "Go", "Rust", "Python", "TS", "Java",
-               },
+                Language;  []Language {
+                             "Go", "Rust", "Python", "TS", "Java",
+                           },
 		TechStack: []Technology {
-      				   "SpringBoot", "FastAPI", "NestJS", // Backend Skills
-                 "Docker", "Docker Swarm", CircleCI", "AWS", "Nginx", // Infra Skills
-                 "PostgreSQL", "MongoDB", "Redis", // DB Skills
-                 "Perfect", "MLflow", "Tensorflow", "TensorRT", // AI/ML Skills
-               },
+                             "SpringBoot", "FastAPI", "NestJS", // Backend Skills
+                             "Docker", "Docker Swarm", CircleCI", "AWS", "Nginx", // Infra Skills
+                             "PostgreSQL", "MongoDB", "Redis", // DB Skills
+                             "Perfect", "MLflow", "Tensorflow", "TensorRT", // AI/ML Skills
+                           },
 		Student:   School{ "Inje Univ AI/bigdata" }
 	},
 }
