@@ -18,31 +18,30 @@ BERT 활용 한국어 감성분석 특허 출원<br>
 
 ```golang
 type sxngt struct {
-	GitHub        GitHub
-	Email         Email
-	Threads       Threads
-	LinkedIn      LinkedIn
-        Language      []Language
-	TechStack     []Technology
-	Student       School
+  GitHub        GitHub
+  Email         Email
+  Threads       Threads
+  LinkedIn      LinkedIn
+  Language      []Language
+  TechStack     []Technology
+  Student       School
 }
 
 func (s *sxngt NewSxngt() *sxngt {
-	return *sxngt{
-		GitHub:    GitHub{ "sxngt" },
-		Email: 	   Email{ "sxngt@icloud.com" },
-		Threads:   Threads{ "sang._.hn" },
-                Language;  []Language {
-                             "Go", "Rust", "Python", "TS", "Java",
-                           },
-		TechStack: []Technology {
-                             "SpringBoot", "FastAPI", "NestJS", // Backend Skills
-                             "Docker", "Docker Swarm", "CircleCI", "AWS", "Nginx", // Infra Skills
-                             "PostgreSQL", "MongoDB", "Redis", // DB Skills
-                             "Perfect", "MLflow", "Tensorflow", "TensorRT", // AI/ML Skills
-                           },
-		Student:   School{ "Inje Univ AI/bigdata" }
-	},
+  return *sxngt{
+  GitHub:    GitHub{"sxngt"},
+  Email:     Email{"sxngt@icloud.com"},
+  Threads:   Threads{"sang._.hn"},
+  Language;  []Language {
+      "Go", "Rust", "Python", "TS", "Java",
+    },
+  TechStack: []Technology {
+      "SpringBoot", "FastAPI", "NestJS", // Backend Skills
+      "Docker", "Docker Swarm", "CircleCI", "AWS", "Nginx", // Infra Skills
+      "PostgreSQL", "MongoDB", "Redis", // DB Skills
+      "Perfect", "MLflow", "Tensorflow", "TensorRT", // AI/ML Skills
+    },
+  Student:   School{"Inje Univ AI/bigdata"}
 }
 ```
 
