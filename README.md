@@ -37,7 +37,7 @@ func (s *sxngt NewSxngt() *sxngt {
                            },
 		TechStack: []Technology {
                              "SpringBoot", "FastAPI", "NestJS", // Backend Skills
-                             "Docker", "Docker Swarm", CircleCI", "AWS", "Nginx", // Infra Skills
+                             "Docker", "Docker Swarm", "CircleCI", "AWS", "Nginx", // Infra Skills
                              "PostgreSQL", "MongoDB", "Redis", // DB Skills
                              "Perfect", "MLflow", "Tensorflow", "TensorRT", // AI/ML Skills
                            },
