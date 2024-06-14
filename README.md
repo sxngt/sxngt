@@ -8,7 +8,6 @@
   
 ## PROJECT & ACTIVITY
 전 ARSS - MSC (MPTCP Service Commercialization) 개발자<br>
-인프런 Tensorflow 톺아보기 Season1 - 강사<br>
 전 INJE Medical LAB - 연구원<br><br><br>
 
 ## Papers
@@ -17,8 +16,37 @@
 치매 조기탐지 CV 활용 연구 전망 수집 연구<br>
 BERT 활용 한국어 감성분석 특허 출원<br>
 
+```golang
+type sxngt struct {
+	GitHub        GitHub
+	Email         Email
+	Threads       Threads
+	LinkedIn      LinkedIn
+  Language      []Language
+	TechStack     []Technology
+	Student       School
+}
 
+func (s *sxngt NewSxngt() *sxngt {
+	return *sxngt{
+		GitHub:    GitHub{ "sxngt" },
+		Email: 	   Email{ "sxngt@icloud.com" },
+		Threads:   Threads{ "sang._.hn" },
+    Language;  []Language {
+                 "Go", "Rust", "Python", "TS", "Java",
+               },
+		TechStack: []Technology {
+      				   "SpringBoot", "FastAPI", "NestJS", // Backend Skills
+                 "Docker", "Docker Swarm", CircleCI", "AWS", "Nginx", // Infra Skills
+                 "PostgreSQL", "MongoDB", "Redis", // DB Skills
+                 "Perfect", "MLflow", "Tensorflow", "TensorRT", // AI/ML Skills
+               },
+		Student:   School{ "Inje Univ AI/bigdata" }
+	},
+}
+```
 
+<!--
 ## 💪 Skills
 ### Language
 <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
@@ -36,16 +64,10 @@ BERT 활용 한국어 감성분석 특허 출원<br>
 <img src="https://img.shields.io/badge/Mlflow-0194E2?style=for-the-badge&logo=Mlflow&logoColor=white">
 <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=OpenCV&logoColor=white">
   <br><br>
- 
+ -->
  
   
 
 ## CARDS
   <a href="https://solved.ac/profile/injefol"><img src="https://github-readme-solvedac-hyp3rflow.vercel.app/api/?handle=injefol"/></a>
-  ![](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=sxngt&theme=nord_dark)
                                                  
-<br><br>
-
-### Contacts 📫
-
- Email: yshdevac@gmail.com
