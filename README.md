@@ -28,7 +28,7 @@ type sxngt struct {
 }
 
 func (s *sxngt NewSxngt() *sxngt {
-  return *sxngt{
+  return *sxngt {
   GitHub:    GitHub{"sxngt"},
   Email:     Email{"sxngt@icloud.com"},
   Threads:   Threads{"sang._.hn"},
