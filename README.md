@@ -52,56 +52,6 @@ model ExampleSxngt {
   ]
   student   = "Inje Univ AI/bigdata"
 }
-<!--
-```golang
-type sxngt struct {
-  GitHub        GitHub
-  Email         Email
-  Threads       Threads
-  LinkedIn      LinkedIn
-  Language      []Language
-  TechStack     []Technology
-  Student       School
-}
-
-func (s *sxngt NewSxngt() *sxngt {
-  return *sxngt {
-  GitHub:    GitHub{"sxngt"},
-  Email:     Email{"sxngt@icloud.com"},
-  Threads:   Threads{"sang._.hn"},
-  Language;  []Language {
-      "Go", "Rust", "Python", "TS", "Java",
-    },
-  TechStack: []Technology {
-      "SpringBoot", "FastAPI", "NestJS", "Fiber" // Backend Skills
-      "Docker", "Docker Swarm", "CircleCI", "AWS", "Nginx", // Infra Skills
-      "PostgreSQL", "MongoDB", "Redis", // DB Skills
-      "Perfect", "MLflow", "Tensorflow", "TensorRT", // AI/ML Skills
-    },
-  Student:   School{"Inje Univ AI/bigdata"}
-}
-```
--->
-
-<!--
-## 💪 Skills
-### Language
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
-<img src="https://img.shields.io/badge/Rust-AA2704?style=for-the-badge&logo=Rust&logoColor=white">
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
-<img src="https://img.shields.io/badge/Java-437291?style=for-the-badge&logo=openjdk&logoColor=white">
-
-  
-### Library and FrameWork
-<img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
-<img src="https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white">
-<img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white">
-<img src="https://img.shields.io/badge/pytorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white">
-<img src="https://img.shields.io/badge/tensorflow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white">
-<img src="https://img.shields.io/badge/Mlflow-0194E2?style=for-the-badge&logo=Mlflow&logoColor=white">
-<img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=OpenCV&logoColor=white">
-  <br><br>
- -->
  
   
 
