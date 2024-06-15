@@ -16,6 +16,43 @@
 치매 조기탐지 CV 활용 연구 전망 수집 연구<br>
 BERT 활용 한국어 감성분석 특허 출원<br>
 
+
+# Welcome to My GitHub Profile!
+
+```prisma
+model Sxngt {
+  github    String @default("sxngt")
+  email     String @default("sxngt@icloud.com")
+  threads   String @default("sang._.hn")
+  languages String[]
+  techStack TechStack[]
+  student   String @default("Inje Univ AI/bigdata")
+}
+
+model TechStack {
+  backend   String[]
+  infra     String[]
+  database  String[]
+  ai_ml     String[]
+}
+
+// Example values for the Sxngt model:
+model ExampleSxngt {
+  github    = "sxngt"
+  email     = "sxngt@icloud.com"
+  threads   = "sang._.hn"
+  languages = ["Go", "Rust", "Python", "TS", "Java"]
+  techStack = [
+    TechStack(
+      backend   = ["SpringBoot", "FastAPI", "NestJS", "Fiber"],
+      infra     = ["Docker", "Docker Swarm", "CircleCI", "AWS", "Nginx"],
+      database  = ["PostgreSQL", "MongoDB", "Redis"],
+      ai_ml     = ["Perfect", "MLflow", "Tensorflow", "TensorRT"]
+    )
+  ]
+  student   = "Inje Univ AI/bigdata"
+}
+<!--
 ```golang
 type sxngt struct {
   GitHub        GitHub
@@ -44,6 +81,7 @@ func (s *sxngt NewSxngt() *sxngt {
   Student:   School{"Inje Univ AI/bigdata"}
 }
 ```
+-->
 
 <!--
 ## 💪 Skills
