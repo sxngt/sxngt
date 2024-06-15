@@ -52,7 +52,7 @@ model ExampleSxngt {
   ]
   student   = "Inje Univ AI/bigdata"
 }
- 
+```
   
 
 ## CARDS
