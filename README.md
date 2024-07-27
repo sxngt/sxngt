@@ -36,8 +36,7 @@ model TechStack {
   ai_ml     String[]
 }
 
-// Example values for the Sxngt model:
-model ExampleSxngt {
+model Sxngt {
   github    = "sxngt"
   email     = "sxngt@icloud.com"
   threads   = "sang._.hn"
