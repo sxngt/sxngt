@@ -53,7 +53,8 @@ model Sxngt {
 }
 ```
   
-
+<div align=center>
+  
 ## CARDS
   <a href="https://solved.ac/profile/injefol"><img src="https://github-readme-solvedac-hyp3rflow.vercel.app/api/?handle=injefol"/></a>
   <a href="https://github.com/devxb/gitanimals">
