@@ -28,7 +28,16 @@ model Sxngt {
   github    String @default("sxngt")
   email     String @default("sxngt@icloud.com")
   threads   String @default("sang._.hn")
+  student   String @default("Inje Univ AI/bigdata")
   languages String[] @default(["Go", "Rust", "Python", "TS", "Java"])
+
+  model TechStack {
+    backend   String[]
+    infra     String[]
+    database  String[]
+    ai_ml     String[]
+  }
+
   techStack TechStack[] @default(
       [
         TechStack(
@@ -39,14 +48,6 @@ model Sxngt {
         )
       ]
     )
-  student   String @default("Inje Univ AI/bigdata")
-}
-
-model TechStack {
-  backend   String[]
-  infra     String[]
-  database  String[]
-  ai_ml     String[]
 }
 ```
   
