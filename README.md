@@ -8,7 +8,8 @@
   
 ## PROJECT & ACTIVITY
 전 ARSS - MSC (MPTCP Service Commercialization) 개발자<br>
-전 INJE Medical LAB - 연구원<br><br><br>
+전 INJE Medical LAB - 연구원<br>
+현 AI 융합로봇학 석사<br><br><br>
 
 ## Papers
 <a href="https://pubmed.ncbi.nlm.nih.gov/36186808/">
