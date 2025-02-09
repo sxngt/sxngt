@@ -12,13 +12,16 @@
 현 AI 융합로봇학 석사<br><br><br>
 
 ## Papers
-  코로나 관련 SNS 크롤링 - NLP 토픽 모델링, 감성분석 논문 작성 / SCI급 (IF =4.0) <a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2022.948917/full">
- #
-</a><br>
-치매 조기탐지 CV 활용 연구 전망 수집 연구 <a href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2022.894266/full">
-  코로나 블루 - 비만관련 키워드에 대한 자연어 분석 논문 작성 튜터링<br>
-</a><br>
-BERT 활용 한국어 감성분석 특허 출원<br>
+  코로나 관련 SNS 크롤링 - NLP 토픽 모델링, 감성분석 논문 작성 / SCI급 (IF =4.0)
+  <a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2022.948917/full">
+    [paper]
+  </a><br>
+  코로나 블루 - 비만관련 키워드에 대한 자연어 분석 논문 작성 튜터링
+  <a href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2022.894266/full">
+    [paper]
+  </a><br>
+  치매 조기탐지 CV 활용 연구 전망 수집 연구<br>
+  BERT 활용 한국어 감성분석 특허 출원<br>
 
 
 # Welcome to My GitHub Profile!
