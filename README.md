@@ -13,8 +13,9 @@
 
 ## Papers
 <a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2022.948917/full">
-  코로나 관련 SNS 크롤링 - NLP 토픽 모델링, 감성분석 논문 작성 / SCI급 (IF =4.0)<br>
+  코로나 관련 SNS 크롤링 - NLP 토픽 모델링, 감성분석 논문 작성
 </a>
+ / SCI급 (IF =4.0) <br>
 <a href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2022.894266/full">
   코로나 블루 - 비만관련 키워드에 대한 자연어 분석 논문 작성 튜터링<br>
 </a>
