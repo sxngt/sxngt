@@ -12,7 +12,7 @@
 현 AI 융합로봇학 석사<br><br><br>
 
 ## Papers
-<a href="https://pubmed.ncbi.nlm.nih.gov/36186808/](https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2022.948917/full">
+<a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2022.948917/full">
   코로나 관련 SNS 크롤링 - NLP 토픽 모델링, 감성분석 논문 작성<br>
 </a>
 <a href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2022.894266/full">
