@@ -4,6 +4,8 @@
 
 ʕ ̳• · • ̳ʔ 상티 깃헙에 오신걸 환영함다 ʕ๑•̀ᴗ-ʔ
 
+#### I am sxngt, a researcher who values and pursues the intersection between engineering philosophy and research philosophy
+
   <div align=left>
   
 ## Work Experience
@@ -14,7 +16,7 @@
 
 ## Currently working at 
 Team Exhibition BE SWE<br>
-Inje SC Lab - Master's program<br><br><br>
+Inje SC Lab - Master's program<br>
 
 ## Papers
   COVID-19 related SNS crawling - NLP topic modeling, sentiment analysis paper / SCI-indexed journals (IF =4.0)
@@ -27,7 +29,7 @@ Inje SC Lab - Master's program<br><br><br>
   </a><br>
 
 
-# Welcome to My GitHub Profile!
+# Tech Stack
 
 ```prisma
 model Sxngt {
