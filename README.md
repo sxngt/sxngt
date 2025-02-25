@@ -6,22 +6,25 @@
 
   <div align=left>
   
-## PROJECT & ACTIVITY
-전 ARSS - MSC (MPTCP Service Commercialization) 개발자<br>
-전 INJE Medical LAB - 연구원<br>
-현 AI 융합로봇학 석사<br><br><br>
+## Work Experience
+2021 - 2022 / ARSS - MSC (MPTCP Service Commercialization) - SWE<br>
+2021 - 2023 / INJE Medical LAB - Researcher<br>
+2023        / Always Yoga - Parttime SWE<br>
+2023 - 2024 / MITS LAB - Research Intern<br>
+
+## Currently working at 
+Team Exhibition BE SWE<br>
+Inje SC Lab - Master's program<br><br><br>
 
 ## Papers
-  코로나 관련 SNS 크롤링 - NLP 토픽 모델링, 감성분석 논문 작성 / SCI급 (IF =4.0)
+  COVID-19 related SNS crawling - NLP topic modeling, sentiment analysis paper / SCI-indexed journals (IF =4.0)
   <a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2022.948917/full">
     [paper]
   </a><br>
-  코로나 블루 - 비만관련 키워드에 대한 자연어 분석 논문 작성 튜터링
+  Academic guidance for paper writing on natural language analysis of COVID-related depression and obesity keywords
   <a href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2022.894266/full">
     [paper]
   </a><br>
-  치매 조기탐지 CV 활용 연구 전망 수집 연구<br>
-  BERT 활용 한국어 감성분석 특허 출원<br>
 
 
 # Welcome to My GitHub Profile!
