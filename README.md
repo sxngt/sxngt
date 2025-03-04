@@ -36,7 +36,7 @@ model Sxngt {
   github    String @default("sxngt")
   email     String @default("sxngt@icloud.com")
   threads   String @default("sang._.hn")
-  student   String @default("Inje Univ AI/bigdata")
+  student   String @default("SC lab AI/Robotics")
   languages String[] @default(["Go", "Rust", "Python", "TS", "Java"])
 
   model TechStack {
@@ -52,7 +52,7 @@ model Sxngt {
           backend   = ["SpringBoot", "FastAPI", "NestJS", "Fiber"],
           infra     = ["Docker", "Docker Swarm", "CircleCI", "AWS", "Nginx"],
           database  = ["PostgreSQL", "MongoDB", "Redis"],
-          ai_ml     = ["Perfect", "MLflow", "Tensorflow", "TensorRT"]
+          ai_ml     = ["Perfect", "MLflow", "Tensorflow", "TensorRT", "ONNX"]
         )
       ]
     )
