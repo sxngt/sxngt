@@ -13,10 +13,12 @@
 2021 - 2023 / INJE Medical LAB - Researcher<br>
 2023        / Always Yoga - Parttime SWE<br>
 2023 - 2024 / MITS LAB - Research Intern<br>
+2023-2025 / Team Exhibition BE SWE<br>
 
 ## Currently working at 
-Team Exhibition BE SWE<br>
 Inje SC Lab - Master's program<br>
+<br>
+**Yeirin - CTO** <br>
 
 ## Papers
   COVID-19 related SNS crawling - NLP topic modeling, sentiment analysis paper / SCI-indexed journals (IF =4.0)
