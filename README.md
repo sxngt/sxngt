@@ -64,7 +64,8 @@ model Sxngt {
 <div align=center>
   
 ## CARDS
-  <a href="https://solved.ac/profile/injefol"><img src="https://github-readme-solvedac-hyp3rflow.vercel.app/api/?handle=injefol"/></a>
+  [![Solved.ac Profile](https://solvedac-readme-stats.vercel.app/api?handle=injefol&v=2&streak=false)](https://solved.ac/injefol)</a>
+  <br>사랑했다 백준.. 다이아 못달고 가서 미안타..<br><br>
   <a href="https://github.com/devxb/gitanimals">
     <img src="https://render.gitanimals.org/farms/sxngt"/>
   </a>
