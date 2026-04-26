@@ -18,6 +18,7 @@
 ## Currently working at 
 Inje SC Lab - Master's program<br>
 <br>
+**Yeirin Co., Ltd - Representative Director** <br>
 **Yeirin - CTO** <br>
 
 ## Papers
