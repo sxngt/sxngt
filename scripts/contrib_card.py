@@ -17,7 +17,9 @@ from __future__ import annotations
 
 import argparse
 import base64
+import html
 import os
+import re
 import sys
 from dataclasses import dataclass
 from xml.sax.saxutils import escape
@@ -72,13 +74,23 @@ def fetch(repo: str, login: str, token: str | None) -> CardData:
         rp = c.get("/search/issues", params={"q": f"repo:{repo} is:pr is:merged author:{login}", "per_page": 1})
         merged = int(rp.json().get("total_count", 0)) if rp.status_code == 200 else 0
 
-    # GitHub's social-preview (OG) image, embedded as base64 so it renders inside
-    # the SVG on GitHub (camo blocks external hrefs inside SVGs).
+    # Repo's social-preview image. If the maintainers uploaded a custom one in
+    # repo settings, the page's og:image points to repository-images.githubusercontent.com;
+    # otherwise GitHub serves an auto-generated card. Embedded as base64 because
+    # GitHub's camo proxy blocks external hrefs inside SVGs in READMEs.
     og_uri = ""
+    og_url = f"https://opengraph.githubassets.com/card/{repo}"
     try:
-        r = httpx.get(f"https://opengraph.githubassets.com/card/{repo}", timeout=30, follow_redirects=True)
+        page = httpx.get(f"https://github.com/{repo}", timeout=30, follow_redirects=True,
+                         headers={"User-Agent": "contrib-card"})
+        m = re.search(r'<meta[^>]+property="og:image"[^>]+content="([^"]+)"', page.text) if page.status_code == 200 else None
+        if m:
+            og_url = html.unescape(m.group(1))
+        r = httpx.get(og_url, timeout=30, follow_redirects=True)
         if r.status_code == 200 and r.content:
-            og_uri = "data:image/png;base64," + base64.b64encode(r.content).decode()
+            mime = r.headers.get("content-type", "image/png").split(";")[0]
+            og_uri = f"data:{mime};base64," + base64.b64encode(r.content).decode()
+            print(f"og image: {og_url} ({len(r.content)} bytes, {mime})")
     except httpx.HTTPError as e:
         print(f"warning: could not fetch OG image: {e}", file=sys.stderr)
 
