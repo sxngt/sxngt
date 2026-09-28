@@ -18,10 +18,12 @@ from __future__ import annotations
 import argparse
 import base64
 import html
+import json
 import os
 import re
 import sys
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from xml.sax.saxutils import escape
 
 import httpx
@@ -41,6 +43,7 @@ class CardData:
     merged_prs: int
     commits: int
     og_data_uri: str = ""
+    og_url: str = ""
 
 
 def fetch(repo: str, login: str, token: str | None) -> CardData:
@@ -96,6 +99,7 @@ def fetch(repo: str, login: str, token: str | None) -> CardData:
 
     return CardData(
         og_data_uri=og_uri,
+        og_url=og_url,
         full_name=meta["full_name"],
         description=meta.get("description") or "",
         stars=int(meta.get("stargazers_count", 0)),
@@ -214,6 +218,32 @@ def main() -> int:
     data = fetch(args.repo, args.login, token)
     if not data.is_contributor:
         print(f"warning: {args.login} not found in contributors of {args.repo}", file=sys.stderr)
+
+    # Machine-readable copy for external embeds (blogs, React components).
+    json_out = os.path.splitext(args.out)[0] + ".json"
+    os.makedirs(os.path.dirname(json_out) or ".", exist_ok=True)
+    with open(json_out, "w", encoding="utf-8") as f:
+        json.dump(
+            {
+                "repo": data.full_name,
+                "url": f"https://github.com/{data.full_name}",
+                "description": data.description,
+                "stars": data.stars,
+                "forks": data.forks,
+                "language": data.language,
+                "ogImage": data.og_url,
+                "contributor": {
+                    "login": data.login,
+                    "verified": data.is_contributor,
+                    "mergedPrs": data.merged_prs,
+                    "commits": data.commits,
+                    "prsUrl": f"https://github.com/{data.full_name}/pulls?q=is%3Apr+is%3Amerged+author%3A{data.login}",
+                },
+                "updatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            },
+            f, ensure_ascii=False, indent=2,
+        )
+    print(f"wrote {json_out}")
 
     themes = ["light", "dark"] if args.theme == "both" else [args.theme]
     for t in themes:
