@@ -33,18 +33,26 @@ Inje SC Lab - Master's program<br>
 
 
 ## Open Source Contributions
-  <a href="https://github.com/mujocolab/mjlab/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mjlab-card-dark.svg">
-      <img alt="mjlab contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mjlab-card-light.svg">
-    </picture>
-  </a>
-  <a href="https://github.com/kevinzakka/mink/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mink-card-dark.svg">
-      <img alt="mink contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mink-card-light.svg">
-    </picture>
-  </a>
+  <table>
+    <tr>
+      <td align="center" width="50%">
+        <a href="https://github.com/mujocolab/mjlab/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mjlab-card-dark.svg">
+            <img alt="mjlab contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mjlab-card-light.svg" width="100%">
+          </picture>
+        </a>
+      </td>
+      <td align="center" width="50%">
+        <a href="https://github.com/kevinzakka/mink/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mink-card-dark.svg">
+            <img alt="mink contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mink-card-light.svg" width="100%">
+          </picture>
+        </a>
+      </td>
+    </tr>
+  </table>
 
 # Tech Stack
 
