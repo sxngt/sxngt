@@ -1,4 +1,4 @@
-name: Update mjlab contributor card
+name: Update contributor cards
 
 on:
   schedule:
@@ -8,6 +8,12 @@ on:
 permissions:
   contents: write
 
+env:
+  # owner/repo pairs to render a card for; output goes to assets/<repo>-card-*.svg
+  CARD_REPOS: |
+    mujocolab/mjlab
+    kevinzakka/mink
+
 jobs:
   render:
     runs-on: ubuntu-latest
@@ -16,12 +22,15 @@ jobs:
 
       - uses: astral-sh/setup-uv@v6
 
-      - name: Render card
+      - name: Render cards
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CARD_REPO: mujocolab/mjlab
           CARD_LOGIN: ${{ github.repository_owner }}
-        run: uv run scripts/contrib_card.py --out assets/mjlab-card.svg --theme both
+        run: |
+          for repo in $CARD_REPOS; do
+            name=${repo#*/}
+            uv run scripts/contrib_card.py --repo "$repo" --login "$CARD_LOGIN" --out "assets/${name}-card.svg" --theme both
+          done
 
       - name: Commit if changed
         run: |
@@ -29,5 +38,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/
           git diff --cached --quiet && echo "no change" && exit 0
-          git commit -m "chore: refresh mjlab contributor card"
+          git commit -m "chore: refresh contributor cards"
           git push
