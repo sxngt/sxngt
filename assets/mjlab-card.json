@@ -2,8 +2,8 @@
   "repo": "mujocolab/mjlab",
   "url": "https://github.com/mujocolab/mjlab",
   "description": "Isaac Lab API, powered by MuJoCo-Warp, for RL and robotics research",
-  "stars": 3160,
-  "forks": 549,
+  "stars": 3161,
+  "forks": 548,
   "language": "Python",
   "ogImage": "https://repository-images.githubusercontent.com/999275152/f23cfd68-461d-4a19-a685-57fc56884c35",
   "contributor": {
@@ -13,5 +13,5 @@
     "commits": 1,
     "prsUrl": "https://github.com/mujocolab/mjlab/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt"
   },
-  "updatedAt": "2026-10-02T09:53:57+00:00"
+  "updatedAt": "2026-10-03T09:16:11+00:00"
 }
