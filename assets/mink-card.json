@@ -2,7 +2,7 @@
   "repo": "kevinzakka/mink",
   "url": "https://github.com/kevinzakka/mink",
   "description": "Python inverse kinematics based on MuJoCo.",
-  "stars": 1572,
+  "stars": 1575,
   "forks": 125,
   "language": "Python",
   "ogImage": "https://repository-images.githubusercontent.com/763348154/eff43133-0b87-45ae-a246-7bd5034faf30",
@@ -13,5 +13,5 @@
     "commits": 1,
     "prsUrl": "https://github.com/kevinzakka/mink/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt"
   },
-  "updatedAt": "2026-10-07T10:23:46+00:00"
+  "updatedAt": "2026-10-08T10:43:52+00:00"
 }
