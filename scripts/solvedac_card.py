@@ -67,9 +67,15 @@ class Card:
 
 
 def fetch(handle: str) -> Card:
-    with httpx.Client(timeout=30, headers={"Accept": "application/json", "User-Agent": "solvedac-card"}) as c:
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) sxngt-profile-card/1.0 (+https://github.com/sxngt/sxngt)",
+    }
+    with httpx.Client(timeout=30, headers=headers, follow_redirects=True) as c:
         r = c.get(f"{API}/user/show", params={"handle": handle})
-        r.raise_for_status()
+        if r.status_code != 200:
+            print(f"::error::solved.ac API {r.status_code} for {handle}: {r.text[:300]!r}")
+            r.raise_for_status()
         u = r.json()
         icon = ""
         try:
@@ -172,7 +178,11 @@ def main() -> int:
     p.add_argument("--out", default="assets/solvedac-card.svg")
     args = p.parse_args()
 
-    d = fetch(args.handle)
+    try:
+        d = fetch(args.handle)
+    except Exception as e:  # surface the cause as a GitHub Actions annotation
+        print(f"::error::solved.ac fetch failed: {type(e).__name__}: {e}")
+        raise
     json_out = os.path.splitext(args.out)[0] + ".json"
     os.makedirs(os.path.dirname(json_out) or ".", exist_ok=True)
     name, group = tier_name(d.tier)
