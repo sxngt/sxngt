@@ -1,4 +1,4 @@
-name: Update contributor cards
+name: Update profile cards
 
 on:
   schedule:
@@ -33,11 +33,14 @@ jobs:
             uv run scripts/contrib_card.py --repo "$repo" --login "$CARD_LOGIN" --out "assets/${name}-card.svg" --theme both
           done
 
+      - name: Render solved.ac card
+        run: uv run scripts/solvedac_card.py --handle injefol --out assets/solvedac-card.svg
+
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/
           git diff --cached --quiet && echo "no change" && exit 0
-          git commit -m "chore: refresh contributor cards"
+          git commit -m "chore: refresh profile cards"
           git push

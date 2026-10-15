@@ -97,7 +97,12 @@ model Sxngt {
 <div align=center>
   
 ## CARDS
-  [![Solved.ac Profile](https://solvedac-readme-stats.vercel.app/api?handle=injefol&v=2&streak=false)](https://solved.ac/injefol)</a>
+  <a href="https://solved.ac/profile/injefol">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/solvedac-card-dark.svg">
+      <img alt="solved.ac profile card for injefol" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/solvedac-card-light.svg" width="480">
+    </picture>
+  </a>
   <br>사랑했다 백준.. 다이아 못달고 가서 미안타..<br><br>
   <a href="https://school.programmers.co.kr/skill_checks">
     <picture>
