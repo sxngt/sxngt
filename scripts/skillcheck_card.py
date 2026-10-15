@@ -55,7 +55,7 @@ def render(theme: str) -> str:
     ok = "#3fb950" if dark else "#1a7f37"
     stripe = "#8957e5"
 
-    W, H = 480, 200
+    W, H = 480, 240
     e = 50  # emblem size
     x = 24
     pill_text = f"Level {LEVEL} · {TITLE}"
@@ -63,7 +63,7 @@ def render(theme: str) -> str:
     pill_w = 10 + 24 + 8 + round(7.7 * len(pill_text)) + 13
 
     stars = "".join(
-        f'<path transform="translate({24 + i * 24},{H - 76})" fill="{star_on if i < LEVEL else star_off}" d="{STAR}"/>'
+        f'<path transform="translate({24 + i * 24},{H - 82})" fill="{star_on if i < LEVEL else star_off}" d="{STAR}"/>'
         for i in range(MAX_LEVEL)
     )
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Programmers skill check Level {LEVEL} ({TITLE}) for @{LOGIN}">
@@ -72,21 +72,21 @@ def render(theme: str) -> str:
   <rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="{bg}" stroke="{border}"/>
   <rect clip-path="url(#card)" x="0" y="0" width="6" height="{H}" fill="{stripe}"/>
   <!-- header: logo -->
-  <image x="{x}" y="20" width="142" height="30" href="{logo_uri()}"/>
-  <text x="{x}" y="72" font-size="13.5" fill="{fg}"><tspan fill="{muted}">programmers/</tspan><tspan font-weight="700" fill="{accent}">skill-check</tspan><tspan fill="{muted}"> · 코딩테스트 역량 인증 · {escape(NAME)}</tspan></text>
+  <image x="{x}" y="22" width="217" height="46" href="{logo_uri()}"/>
+  <text x="{x}" y="96" font-size="14" fill="{fg}"><tspan fill="{muted}">programmers/</tspan><tspan font-weight="700" fill="{accent}">skill-check</tspan><tspan fill="{muted}"> · 코딩테스트 역량 인증 · {escape(NAME)}</tspan></text>
   <!-- level pill -->
-  <g transform="translate({W - 24 - pill_w},22)">
+  <g transform="translate({W - 24 - pill_w},30)">
     <rect width="{pill_w}" height="30" rx="15" fill="{pill_bg}"/>
     <image x="10" y="3" width="24" height="24" href="{emblem_uri()}"/>
     <text x="{(pill_w + 30) / 2}" y="20" font-size="13.5" font-weight="700" fill="{pill_fg}" text-anchor="middle">{pill_text}</text>
   </g>
   <!-- divider -->
-  <line x1="24" y1="{H - 96}" x2="{W - 24}" y2="{H - 96}" stroke="{border}"/>
+  <line x1="24" y1="{H - 104}" x2="{W - 24}" y2="{H - 104}" stroke="{border}"/>
   <!-- level stars -->
   {stars}
-  <text x="{24 + MAX_LEVEL * 24 + 6}" y="{H - 62}" font-size="14.5" fill="{fg}" font-weight="600">Level {LEVEL} / {MAX_LEVEL}</text>
+  <text x="{24 + MAX_LEVEL * 24 + 6}" y="{H - 68}" font-size="14.5" fill="{fg}" font-weight="600">Level {LEVEL} / {MAX_LEVEL}</text>
   <!-- footer line -->
-  <g transform="translate(24,{H - 26})">
+  <g transform="translate(24,{H - 28})">
     <path fill="{ok}" d="{CHECK}" transform="translate(0,-11)"/>
     <text x="22" y="1" font-size="13.5" fill="{fg}">@{LOGIN} · 최고 레벨({TITLE}) 달성 · school.programmers.co.kr</text>
   </g>

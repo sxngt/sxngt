@@ -127,7 +127,7 @@ def render(d: Card, theme: str) -> str:
 
     name, group = tier_name(d.tier)
     tcol = TIER_COLORS[group]
-    W, H, x = 480, 200, 24
+    W, H, x = 480, 240, 24
     pill_text = f"{name} · {d.rating}"
     pill_w = 13 + round(7.7 * len(pill_text)) + 13 + (22 if d.icon_uri else 0)
     pill_icon = f'<image x="11" y="6" width="18" height="18" href="{d.icon_uri}"/>' if d.icon_uri else ""
@@ -143,7 +143,7 @@ def render(d: Card, theme: str) -> str:
     items, sx = [], x
     for sym, label, col in stats:
         items.append(
-            f'<g transform="translate({sx},{H - 76})">'
+            f'<g transform="translate({sx},{H - 82})">'
             f'<circle cx="7" cy="7.5" r="7" fill="{col}"/>'
             f'<text x="7" y="11.2" font-size="9.5" font-weight="700" fill="{bg}" text-anchor="middle">{sym}</text>'
             f'<text x="20" y="12.5" font-size="14.5" fill="{fg}" font-weight="600">{escape(label)}</text></g>'
@@ -156,20 +156,20 @@ def render(d: Card, theme: str) -> str:
   <clipPath id="card"><rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10"/></clipPath>
   <rect clip-path="url(#card)" x="0" y="0" width="6" height="{H}" fill="{tcol}"/>
   <!-- header -->
-  <image x="{x}" y="20" width="131" height="30" href="{logo_uri()}"/>
-  <text x="{x}" y="72" font-size="13.5" fill="{fg}"><tspan fill="{muted}">solved.ac/</tspan><tspan font-weight="700" fill="{accent}">{escape(d.handle)}</tspan><tspan fill="{muted}"> · {desc}</tspan></text>
+  <image x="{x}" y="22" width="201" height="46" href="{logo_uri()}"/>
+  <text x="{x}" y="96" font-size="14" fill="{fg}"><tspan fill="{muted}">solved.ac/</tspan><tspan font-weight="700" fill="{accent}">{escape(d.handle)}</tspan><tspan fill="{muted}"> · {desc}</tspan></text>
   <!-- tier pill -->
-  <g transform="translate({W - 24 - pill_w},22)">
+  <g transform="translate({W - 24 - pill_w},30)">
     <rect width="{pill_w}" height="30" rx="15" fill="{tcol}"/>
     {pill_icon}
     <text x="{pill_tx}" y="20" font-size="13.5" font-weight="700" fill="#ffffff" text-anchor="middle">{escape(pill_text)}</text>
   </g>
   <!-- divider -->
-  <line x1="{x}" y1="{H - 96}" x2="{W - 24}" y2="{H - 96}" stroke="{border}"/>
+  <line x1="{x}" y1="{H - 104}" x2="{W - 24}" y2="{H - 104}" stroke="{border}"/>
   <!-- stats row -->
   {''.join(items)}
   <!-- footer -->
-  <g transform="translate({x},{H - 26})">
+  <g transform="translate({x},{H - 28})">
     <path fill="{tcol}" d="{TROPHY}" transform="translate(0,-11)"/>
     <text x="22" y="1" font-size="13.5" fill="{fg}">@{escape(d.handle)} · {escape(name)} · rating {d.rating} · 백준 Online Judge</text>
   </g>

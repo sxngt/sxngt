@@ -92,12 +92,12 @@ model Sxngt {
     <tr>
       <td align="center" width="50%">
         <a href="https://solved.ac/profile/injefol">
-          <img alt="solved.ac profile card for injefol" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/solvedac-card-light.svg?v=8f51917" width="100%">
+          <img alt="solved.ac profile card for injefol" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/solvedac-card-light.svg?v=e38c520" width="100%">
         </a>
       </td>
       <td align="center" width="50%">
         <a href="https://school.programmers.co.kr/skill_checks">
-          <img alt="Programmers skill check Level 5 (Master)" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/programmers-skillcheck-light.svg?v=8f51917" width="100%">
+          <img alt="Programmers skill check Level 5 (Master)" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/programmers-skillcheck-light.svg?v=e38c520" width="100%">
         </a>
       </td>
     </tr>
