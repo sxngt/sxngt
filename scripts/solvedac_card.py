@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["httpx>=0.27"]
+# dependencies = ["curl_cffi>=0.7"]
 # ///
 """Render a solved.ac (Baekjoon Online Judge) profile card SVG.
 
@@ -23,7 +23,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from xml.sax.saxutils import escape
 
-import httpx
+from curl_cffi import requests
 
 API = "https://solved.ac/api/v3"
 TIER_ICON = "https://static.solved.ac/tier_small/{tier}.svg"
@@ -67,23 +67,22 @@ class Card:
 
 
 def fetch(handle: str) -> Card:
-    headers = {
-        "Accept": "application/json",
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) sxngt-profile-card/1.0 (+https://github.com/sxngt/sxngt)",
-    }
-    with httpx.Client(timeout=30, headers=headers, follow_redirects=True) as c:
-        r = c.get(f"{API}/user/show", params={"handle": handle})
-        if r.status_code != 200:
-            print(f"::error::solved.ac API {r.status_code} for {handle}: {r.text[:300]!r}")
-            r.raise_for_status()
-        u = r.json()
-        icon = ""
-        try:
-            ri = c.get(TIER_ICON.format(tier=u["tier"]))
-            if ri.status_code == 200:
-                icon = "data:image/svg+xml;base64," + base64.b64encode(ri.content).decode()
-        except httpx.HTTPError as e:
-            print(f"warning: tier icon fetch failed: {e}", file=sys.stderr)
+    # solved.ac sits behind a Cloudflare bot challenge that rejects plain HTTP
+    # clients from datacenter IPs (GitHub Actions). curl_cffi impersonates a
+    # real browser's TLS/HTTP2 fingerprint, which the managed challenge accepts.
+    s = requests.Session(impersonate="chrome", timeout=30)
+    r = s.get(f"{API}/user/show", params={"handle": handle}, headers={"Accept": "application/json"})
+    if r.status_code != 200:
+        print(f"::error::solved.ac API {r.status_code} for {handle}: {r.text[:200]!r}")
+        raise RuntimeError(f"solved.ac API returned {r.status_code}")
+    u = r.json()
+    icon = ""
+    try:
+        ri = s.get(TIER_ICON.format(tier=u["tier"]))
+        if ri.status_code == 200:
+            icon = "data:image/svg+xml;base64," + base64.b64encode(ri.content).decode()
+    except Exception as e:  # icon is decorative; never fail the card on it
+        print(f"warning: tier icon fetch failed: {e}", file=sys.stderr)
     return Card(
         handle=u["handle"],
         tier=int(u.get("tier", 0)),
@@ -178,12 +177,16 @@ def main() -> int:
     p.add_argument("--out", default="assets/solvedac-card.svg")
     args = p.parse_args()
 
+    json_out = os.path.splitext(args.out)[0] + ".json"
     try:
         d = fetch(args.handle)
-    except Exception as e:  # surface the cause as a GitHub Actions annotation
+    except Exception as e:
+        if os.path.exists(json_out):
+            # Keep the last good card rather than breaking the README.
+            print(f"::warning::solved.ac fetch failed ({type(e).__name__}: {e}); keeping existing card")
+            return 0
         print(f"::error::solved.ac fetch failed: {type(e).__name__}: {e}")
         raise
-    json_out = os.path.splitext(args.out)[0] + ".json"
     os.makedirs(os.path.dirname(json_out) or ".", exist_ok=True)
     name, group = tier_name(d.tier)
     with open(json_out, "w", encoding="utf-8") as f:
