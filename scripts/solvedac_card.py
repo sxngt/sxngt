@@ -110,28 +110,9 @@ FLAME = "M9.533.753V.752c.217 2.385 1.463 3.626 2.653 4.81C13.37 6.74 14.498 7.8
 TROPHY = "M3.217 6.962A3.75 3.75 0 0 1 0 3.25v-.5C0 1.56.56 1 1.75 1h1.5c.058-.5.496-1 1-1h7.5c.504 0 .942.5 1 1h1.5C15.44 1 16 1.56 16 2.75v.5a3.75 3.75 0 0 1-3.217 3.712 3.75 3.75 0 0 1-3.033 2.483V12h2.25a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1 0-1.5h2.25V9.445a3.75 3.75 0 0 1-3.033-2.483ZM3.25 2.5h-1.5a.25.25 0 0 0-.25.25v.5a2.25 2.25 0 0 0 1.75 2.19Zm9.5 0v2.94a2.25 2.25 0 0 0 1.75-2.19v-.5a.25.25 0 0 0-.25-.25Z"
 
 
-def tiles(items, x0, y, width, fg, muted, bg_tile, border):
-    """Equal-width stat tiles: big value, small caption. Centered text, so no width guessing."""
-    n = len(items)
-    gap = 10
-    tw = (width - gap * (n - 1)) / n
-    out = []
-    for i, (value, label, col) in enumerate(items):
-        tx = x0 + i * (tw + gap)
-        out.append(
-            f'<g transform="translate({tx:.1f},{y})">'
-            f'<rect width="{tw:.1f}" height="58" rx="8" fill="{bg_tile}" stroke="{border}"/>'
-            f'<text x="{tw / 2:.1f}" y="30" font-size="21" font-weight="800" fill="{col}" text-anchor="middle">{escape(str(value))}</text>'
-            f'<text x="{tw / 2:.1f}" y="48" font-size="10.5" font-weight="600" fill="{muted}" text-anchor="middle" letter-spacing="0.6">{escape(label.upper())}</text>'
-            f'</g>'
-        )
-    return "".join(out)
-
-
 def render(d: Card, theme: str) -> str:
     dark = theme == "dark"
     bg = "#0d1117" if dark else "#ffffff"
-    tile = "#161b22" if dark else "#f6f8fa"
     border = "#30363d" if dark else "#d0d7de"
     fg = "#e6edf3" if dark else "#1f2328"
     muted = "#8b949e" if dark else "#656d76"
@@ -140,34 +121,51 @@ def render(d: Card, theme: str) -> str:
 
     name, group = tier_name(d.tier)
     tcol = TIER_COLORS[group]
-    W, H, x = 480, 218, 24
-    cw = W - 2 * x
-    klass = f"{d.klass}" + ("" if d.class_deco == "none" else f"+")
-    stat_items = [
-        (fmt(d.solved), "solved", fg),
-        (klass, "class", accent),
-        (f"#{fmt(d.rank)}", "rank", fg),
-        (f"{d.max_streak}d", "max streak", "#f0883e"),
+    W, H, x = 480, 200, 24
+    pill_text = f"{name} · {d.rating}"
+    pill_w = 13 + round(7.7 * len(pill_text)) + 13 + (22 if d.icon_uri else 0)
+    pill_icon = f'<image x="11" y="6" width="18" height="18" href="{d.icon_uri}"/>' if d.icon_uri else ""
+    pill_tx = (pill_w + 22) / 2 if d.icon_uri else pill_w / 2
+    desc = escape(truncate(d.bio, 60)) if d.bio else "Baekjoon Online Judge · solved.ac"
+
+    stats = [
+        ("✓", f"{fmt(d.solved)} solved", ok),
+        ("C", f"Class {d.klass}" + ("" if d.class_deco == "none" else f" {d.class_deco}"), accent),
+        ("S", f"{d.max_streak}d streak", "#f0883e"),
+        ("#", f"#{fmt(d.rank)}", muted),
     ]
+    items, sx = [], x
+    for sym, label, col in stats:
+        items.append(
+            f'<g transform="translate({sx},{H - 76})">'
+            f'<circle cx="7" cy="7.5" r="7" fill="{col}"/>'
+            f'<text x="7" y="11.2" font-size="9.5" font-weight="700" fill="{bg}" text-anchor="middle">{sym}</text>'
+            f'<text x="20" y="12.5" font-size="14.5" fill="{fg}" font-weight="600">{escape(label)}</text></g>'
+        )
+        sx += 20 + 8.0 * len(label) + 22
 
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="solved.ac {escape(name)} card for {escape(d.handle)}">
   <style>text{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}}</style>
-  <clipPath id="card"><rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10"/></clipPath>
   <rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="{bg}" stroke="{border}"/>
+  <clipPath id="card"><rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10"/></clipPath>
   <rect clip-path="url(#card)" x="0" y="0" width="6" height="{H}" fill="{tcol}"/>
   <!-- header -->
-  <text x="{x}" y="34" font-size="15" fill="{fg}"><tspan fill="{muted}" font-weight="400">solved.ac/</tspan><tspan font-weight="700" fill="{accent}">{escape(d.handle)}</tspan></text>
-  <text x="{W - x}" y="34" font-size="12" fill="{muted}" text-anchor="end">Baekjoon Online Judge</text>
-  <!-- hero: tier + rating -->
-  <text x="{x}" y="76" font-size="30" font-weight="800" fill="{tcol}">{escape(name)}</text>
-  <text x="{W - x}" y="54" font-size="10.5" font-weight="600" fill="{muted}" text-anchor="end" letter-spacing="0.6">RATING</text>
-  <text x="{W - x}" y="76" font-size="26" font-weight="800" fill="{fg}" text-anchor="end">{d.rating}</text>
-  <!-- stat tiles -->
-  {tiles(stat_items, x, 94, cw, fg, muted, tile, border)}
+  <text x="{x}" y="44" font-size="20" fill="{fg}"><tspan fill="{muted}" font-weight="400">solved.ac/</tspan><tspan font-weight="700" fill="{accent}">{escape(d.handle)}</tspan></text>
+  <text x="{x}" y="70" font-size="13.5" fill="{muted}">{desc}</text>
+  <!-- tier pill -->
+  <g transform="translate({W - 24 - pill_w},22)">
+    <rect width="{pill_w}" height="30" rx="15" fill="{tcol}"/>
+    {pill_icon}
+    <text x="{pill_tx}" y="20" font-size="13.5" font-weight="700" fill="#ffffff" text-anchor="middle">{escape(pill_text)}</text>
+  </g>
+  <!-- divider -->
+  <line x1="{x}" y1="{H - 96}" x2="{W - 24}" y2="{H - 96}" stroke="{border}"/>
+  <!-- stats row -->
+  {''.join(items)}
   <!-- footer -->
-  <g transform="translate({x},{H - 22})">
-    <path fill="{ok}" d="{CHECK}" transform="translate(0,-11)"/>
-    <text x="22" y="1" font-size="12" fill="{muted}">@{escape(d.handle)} · {escape(name)} · {fmt(d.solved)} problems solved on solved.ac</text>
+  <g transform="translate({x},{H - 26})">
+    <path fill="{tcol}" d="{TROPHY}" transform="translate(0,-11)"/>
+    <text x="22" y="1" font-size="13.5" fill="{fg}">@{escape(d.handle)} · {escape(name)} · rating {d.rating} · 백준 Online Judge</text>
   </g>
 </svg>
 """
