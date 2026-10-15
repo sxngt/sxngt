@@ -38,53 +38,57 @@ def emblem_uri() -> str:
 def render(theme: str) -> str:
     dark = theme == "dark"
     bg = "#0d1117" if dark else "#ffffff"
+    tile = "#161b22" if dark else "#f6f8fa"
     border = "#30363d" if dark else "#d0d7de"
     fg = "#e6edf3" if dark else "#1f2328"
     muted = "#8b949e" if dark else "#656d76"
     accent = "#2f81f7" if dark else "#0969da"
-    pill_bg = "#8957e5" if dark else "#fbefff"
-    pill_fg = "#ffffff" if dark else "#8250df"
+    purple = "#a371f7" if dark else "#8250df"
     star_on = "#e3b341"
     star_off = "#30363d" if dark else "#d0d7de"
     ok = "#3fb950" if dark else "#1a7f37"
-    stripe = "#8957e5"
 
-    W, H = 480, 168
-    e = 44  # emblem size
-    x = 24 + e + 12  # text column starts right of the emblem
-    pill_text = f"Level {LEVEL} · {TITLE}"
-    # 12.5px bold ≈ 7.1px per Latin char; "·" counted as one. Symmetric 12px padding.
-    pill_w = 12 + 16 + 6 + round(7.1 * len(pill_text)) + 12
+    W, H, x = 480, 218, 24
+    cw = W - 2 * x
+    e = 64  # emblem size, sits in the hero row on the right
 
-    stars = "".join(
-        f'<path transform="translate({24 + i * 24},{H - 68})" fill="{star_on if i < LEVEL else star_off}" d="{STAR}"/>'
+    # Three tiles: level, max level, stars
+    gap, n = 10, 3
+    tw = (cw - gap * (n - 1)) / n
+    star_row = "".join(
+        f'<path transform="translate({tw / 2 - 5 * 9 + i * 18:.1f},18) scale(0.85)" fill="{star_on if i < LEVEL else star_off}" d="{STAR}"/>'
         for i in range(MAX_LEVEL)
     )
+    tiles = [
+        (f'<text x="{tw / 2:.1f}" y="30" font-size="21" font-weight="800" fill="{purple}" text-anchor="middle">Lv.{LEVEL}</text>', "level"),
+        (f'<text x="{tw / 2:.1f}" y="30" font-size="21" font-weight="800" fill="{fg}" text-anchor="middle">{LEVEL} / {MAX_LEVEL}</text>', "max level"),
+        (star_row, "skill check"),
+    ]
+    tile_svg = "".join(
+        f'<g transform="translate({x + i * (tw + gap):.1f},94)">'
+        f'<rect width="{tw:.1f}" height="58" rx="8" fill="{tile}" stroke="{border}"/>{body}'
+        f'<text x="{tw / 2:.1f}" y="48" font-size="10.5" font-weight="600" fill="{muted}" text-anchor="middle" letter-spacing="0.6">{label.upper()}</text></g>'
+        for i, (body, label) in enumerate(tiles)
+    )
+
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Programmers skill check Level {LEVEL} ({TITLE}) for @{LOGIN}">
   <style>text{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}}</style>
   <clipPath id="card"><rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10"/></clipPath>
   <rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="{bg}" stroke="{border}"/>
-  <rect clip-path="url(#card)" x="0" y="0" width="6" height="{H}" fill="{stripe}"/>
-  <!-- emblem -->
-  <image x="24" y="18" width="{e}" height="{e}" href="{emblem_uri()}"/>
+  <rect clip-path="url(#card)" x="0" y="0" width="6" height="{H}" fill="{purple}"/>
   <!-- header -->
-  <text x="{x}" y="37" font-size="16" fill="{fg}"><tspan fill="{muted}" font-weight="400">programmers/</tspan><tspan font-weight="700" fill="{accent}">skill-check</tspan></text>
-  <text x="{x}" y="62" font-size="12.5" fill="{muted}">코딩테스트 역량 인증 · {escape(NAME)} (GitHub 연동)</text>
-  <!-- level pill -->
-  <g transform="translate({W - 24 - pill_w},18)">
-    <rect width="{pill_w}" height="26" rx="13" fill="{pill_bg}"/>
-    <path transform="translate(12,5)" fill="{pill_fg}" d="{TROPHY}"/>
-    <text x="{(pill_w + 22) / 2}" y="17.5" font-size="12.5" font-weight="700" fill="{pill_fg}" text-anchor="middle">{pill_text}</text>
-  </g>
-  <!-- divider -->
-  <line x1="24" y1="{H - 84}" x2="{W - 24}" y2="{H - 84}" stroke="{border}"/>
-  <!-- level stars -->
-  {stars}
-  <text x="{24 + MAX_LEVEL * 24 + 6}" y="{H - 55.5}" font-size="13" fill="{fg}" font-weight="600">Level {LEVEL} / {MAX_LEVEL}</text>
-  <!-- footer line -->
-  <g transform="translate(24,{H - 22})">
+  <text x="{x}" y="34" font-size="15" fill="{fg}"><tspan fill="{muted}" font-weight="400">programmers/</tspan><tspan font-weight="700" fill="{accent}">skill-check</tspan></text>
+  <text x="{W - x}" y="34" font-size="12" fill="{muted}" text-anchor="end">코딩테스트 역량 인증</text>
+  <!-- hero: title + emblem -->
+  <text x="{x}" y="76" font-size="30" font-weight="800" fill="{purple}">{TITLE}</text>
+  <text x="{x + 8 * len(TITLE) + 86}" y="76" font-size="13" fill="{muted}">최고 레벨</text>
+  <image x="{W - x - e}" y="40" width="{e}" height="{e}" href="{emblem_uri()}"/>
+  <!-- tiles -->
+  {tile_svg}
+  <!-- footer -->
+  <g transform="translate({x},{H - 22})">
     <path fill="{ok}" d="{CHECK}" transform="translate(0,-11)"/>
-    <text x="22" y="1" font-size="12.5" fill="{fg}">@{LOGIN} · 최고 레벨({TITLE}) 달성 · school.programmers.co.kr</text>
+    <text x="22" y="1" font-size="12" fill="{muted}">@{LOGIN} ({escape(NAME)}) · Level {LEVEL} {TITLE} · school.programmers.co.kr</text>
   </g>
 </svg>
 """
