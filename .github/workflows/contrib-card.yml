@@ -13,6 +13,7 @@ env:
   CARD_REPOS: |
     mujocolab/mjlab
     kevinzakka/mink
+    RLinf/RLinf
 
 jobs:
   render:
@@ -28,7 +29,7 @@ jobs:
           CARD_LOGIN: ${{ github.repository_owner }}
         run: |
           for repo in $CARD_REPOS; do
-            name=${repo#*/}
+            name=${repo#*/}; name=${name,,}
             uv run scripts/contrib_card.py --repo "$repo" --login "$CARD_LOGIN" --out "assets/${name}-card.svg" --theme both
           done
 

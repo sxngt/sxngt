@@ -52,6 +52,16 @@ Inje SC Lab - Master's program<br>
         </a>
       </td>
     </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <a href="https://github.com/RLinf/RLinf/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/rlinf-card-dark.svg">
+            <img alt="RLinf contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/rlinf-card-light.svg" width="50%">
+          </picture>
+        </a>
+      </td>
+    </tr>
   </table>
 
 # Tech Stack
