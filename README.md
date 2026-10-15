@@ -65,7 +65,7 @@ model Sxngt {
   github    String   @default("sxngt")
   email     String   @default("sxngt@icloud.com")
   threads   String   @default("sang._.hn")
-  student   String   @default("Inje SC Lab · AI Convergence Robotics (Ph.D.)")
+  student   String   @default("Department of AI Convergence Robotics, Inje University (Ph.D.) · SC Lab")
   focus     String[] @default(["Physical AI", "Sim-to-Real", "Embodied RL", "VLA", "RLOps"])
   languages String[] @default(["Python", "Go", "Rust", "TS", "C++"])
 
