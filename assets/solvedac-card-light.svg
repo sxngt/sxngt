@@ -10,7 +10,7 @@
   <g transform="translate(304,18)">
     <rect width="152" height="26" rx="13" fill="#27e2a4"/>
     
-    <text x="12" y="17.5" font-size="12.5" font-weight="700" fill="#ffffff">Platinum IV · 1854</text>
+    <text x="76.0" y="17.5" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">Platinum IV · 1854</text>
   </g>
   <!-- divider -->
   <line x1="24" y1="84" x2="456" y2="84" stroke="#d0d7de"/>

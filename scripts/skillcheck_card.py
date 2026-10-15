@@ -74,7 +74,7 @@ def render(theme: str) -> str:
   <g transform="translate({W - 24 - pill_w},18)">
     <rect width="{pill_w}" height="26" rx="13" fill="{pill_bg}"/>
     <path transform="translate(12,5)" fill="{pill_fg}" d="{TROPHY}"/>
-    <text x="34" y="17.5" font-size="12.5" font-weight="700" fill="{pill_fg}">{pill_text}</text>
+    <text x="{(pill_w + 22) / 2}" y="17.5" font-size="12.5" font-weight="700" fill="{pill_fg}" text-anchor="middle">{pill_text}</text>
   </g>
   <!-- divider -->
   <line x1="24" y1="{H - 84}" x2="{W - 24}" y2="{H - 84}" stroke="{border}"/>

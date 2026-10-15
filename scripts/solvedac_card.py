@@ -125,7 +125,7 @@ def render(d: Card, theme: str) -> str:
     pill_text = f"{name} · {d.rating}"
     pill_w = 12 + round(7.1 * len(pill_text)) + 12 + (22 if d.icon_uri else 0)
     pill_icon = f'<image x="10" y="4" width="18" height="18" href="{d.icon_uri}"/>' if d.icon_uri else ""
-    pill_tx = 34 if d.icon_uri else 12
+    pill_tx = (pill_w + 22) / 2 if d.icon_uri else pill_w / 2
     desc = escape(truncate(d.bio, 60)) if d.bio else "Baekjoon Online Judge · solved.ac"
 
     stats = [
@@ -156,7 +156,7 @@ def render(d: Card, theme: str) -> str:
   <g transform="translate({W - 24 - pill_w},18)">
     <rect width="{pill_w}" height="26" rx="13" fill="{tcol}"/>
     {pill_icon}
-    <text x="{pill_tx}" y="17.5" font-size="12.5" font-weight="700" fill="#ffffff">{escape(pill_text)}</text>
+    <text x="{pill_tx}" y="17.5" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">{escape(pill_text)}</text>
   </g>
   <!-- divider -->
   <line x1="{x}" y1="{H - 84}" x2="{W - 24}" y2="{H - 84}" stroke="{border}"/>
