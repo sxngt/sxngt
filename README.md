@@ -37,28 +37,19 @@ Inje SC Lab - Master's program<br>
     <tr>
       <td align="center" width="50%">
         <a href="https://github.com/mujocolab/mjlab/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt">
-          <picture>
-            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mjlab-card-dark.svg">
-            <img alt="mjlab contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mjlab-card-light.svg" width="100%">
-          </picture>
+          <img alt="mjlab contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mjlab-card-light.svg" width="100%">
         </a>
       </td>
       <td align="center" width="50%">
         <a href="https://github.com/kevinzakka/mink/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt">
-          <picture>
-            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mink-card-dark.svg">
-            <img alt="mink contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mink-card-light.svg" width="100%">
-          </picture>
+          <img alt="mink contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mink-card-light.svg" width="100%">
         </a>
       </td>
     </tr>
     <tr>
       <td align="center" colspan="2">
         <a href="https://github.com/RLinf/RLinf/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt">
-          <picture>
-            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/rlinf-card-dark.svg">
-            <img alt="RLinf contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/rlinf-card-light.svg" width="50%">
-          </picture>
+          <img alt="RLinf contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/rlinf-card-light.svg" width="50%">
         </a>
       </td>
     </tr>
@@ -101,18 +92,12 @@ model Sxngt {
     <tr>
       <td align="center" width="50%">
         <a href="https://solved.ac/profile/injefol">
-          <picture>
-            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/solvedac-card-dark.svg?v=44e0e72">
-            <img alt="solved.ac profile card for injefol" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/solvedac-card-light.svg?v=44e0e72" width="100%">
-          </picture>
+          <img alt="solved.ac profile card for injefol" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/solvedac-card-light.svg?v=8f51917" width="100%">
         </a>
       </td>
       <td align="center" width="50%">
         <a href="https://school.programmers.co.kr/skill_checks">
-          <picture>
-            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/programmers-skillcheck-dark.svg?v=44e0e72">
-            <img alt="Programmers skill check Level 5 (Master)" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/programmers-skillcheck-light.svg?v=44e0e72" width="100%">
-          </picture>
+          <img alt="Programmers skill check Level 5 (Master)" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/programmers-skillcheck-light.svg?v=8f51917" width="100%">
         </a>
       </td>
     </tr>

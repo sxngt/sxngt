@@ -28,6 +28,12 @@ TITLE = "Master"
 LOGIN = "sxngt"
 NAME = "윤상현"
 EMBLEM = os.path.join(os.path.dirname(__file__), "..", "assets", "programmers-level5.png")
+LOGO = os.path.join(os.path.dirname(__file__), "..", "assets", "programmers-logo.png")
+
+
+def logo_uri() -> str:
+    with open(LOGO, "rb") as f:
+        return "data:image/png;base64," + base64.b64encode(f.read()).decode()
 
 
 def emblem_uri() -> str:
@@ -51,10 +57,10 @@ def render(theme: str) -> str:
 
     W, H = 480, 200
     e = 50  # emblem size
-    x = 24 + e + 12  # text column starts right of the emblem
+    x = 24
     pill_text = f"Level {LEVEL} · {TITLE}"
     # 12.5px bold ≈ 7.1px per Latin char; "·" counted as one. Symmetric 12px padding.
-    pill_w = 13 + 16 + 6 + round(7.7 * len(pill_text)) + 13
+    pill_w = 10 + 24 + 8 + round(7.7 * len(pill_text)) + 13
 
     stars = "".join(
         f'<path transform="translate({24 + i * 24},{H - 76})" fill="{star_on if i < LEVEL else star_off}" d="{STAR}"/>'
@@ -65,16 +71,14 @@ def render(theme: str) -> str:
   <clipPath id="card"><rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10"/></clipPath>
   <rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="{bg}" stroke="{border}"/>
   <rect clip-path="url(#card)" x="0" y="0" width="6" height="{H}" fill="{stripe}"/>
-  <!-- emblem -->
-  <image x="24" y="22" width="{e}" height="{e}" href="{emblem_uri()}"/>
-  <!-- header -->
-  <text x="{x}" y="44" font-size="16" fill="{fg}"><tspan fill="{muted}" font-weight="400">programmers/</tspan><tspan font-weight="700" fill="{accent}">skill-check</tspan></text>
-  <text x="{x}" y="70" font-size="13.5" fill="{muted}">코딩테스트 역량 인증 · {escape(NAME)} (GitHub 연동)</text>
+  <!-- header: logo -->
+  <image x="{x}" y="20" width="142" height="30" href="{logo_uri()}"/>
+  <text x="{x}" y="72" font-size="13.5" fill="{fg}"><tspan fill="{muted}">programmers/</tspan><tspan font-weight="700" fill="{accent}">skill-check</tspan><tspan fill="{muted}"> · 코딩테스트 역량 인증 · {escape(NAME)}</tspan></text>
   <!-- level pill -->
   <g transform="translate({W - 24 - pill_w},22)">
     <rect width="{pill_w}" height="30" rx="15" fill="{pill_bg}"/>
-    <path transform="translate(13,7)" fill="{pill_fg}" d="{TROPHY}"/>
-    <text x="{(pill_w + 22) / 2}" y="20" font-size="13.5" font-weight="700" fill="{pill_fg}" text-anchor="middle">{pill_text}</text>
+    <image x="10" y="3" width="24" height="24" href="{emblem_uri()}"/>
+    <text x="{(pill_w + 30) / 2}" y="20" font-size="13.5" font-weight="700" fill="{pill_fg}" text-anchor="middle">{pill_text}</text>
   </g>
   <!-- divider -->
   <line x1="24" y1="{H - 96}" x2="{W - 24}" y2="{H - 96}" stroke="{border}"/>

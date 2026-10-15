@@ -27,6 +27,12 @@ from curl_cffi import requests
 
 API = "https://solved.ac/api/v3"
 TIER_ICON = "https://static.solved.ac/tier_small/{tier}.svg"
+LOGO = os.path.join(os.path.dirname(__file__), "..", "assets", "baekjoon-logo.png")
+
+
+def logo_uri() -> str:
+    with open(LOGO, "rb") as f:
+        return "data:image/png;base64," + base64.b64encode(f.read()).decode()
 
 TIER_GROUPS = ["Unrated", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Ruby", "Master"]
 TIER_COLORS = {
@@ -126,7 +132,7 @@ def render(d: Card, theme: str) -> str:
     pill_w = 13 + round(7.7 * len(pill_text)) + 13 + (22 if d.icon_uri else 0)
     pill_icon = f'<image x="11" y="6" width="18" height="18" href="{d.icon_uri}"/>' if d.icon_uri else ""
     pill_tx = (pill_w + 22) / 2 if d.icon_uri else pill_w / 2
-    desc = escape(truncate(d.bio, 60)) if d.bio else "Baekjoon Online Judge · solved.ac"
+    desc = escape(truncate(d.bio, 40)) if d.bio else "Baekjoon Online Judge"
 
     stats = [
         ("✓", f"{fmt(d.solved)} solved", ok),
@@ -150,8 +156,8 @@ def render(d: Card, theme: str) -> str:
   <clipPath id="card"><rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10"/></clipPath>
   <rect clip-path="url(#card)" x="0" y="0" width="6" height="{H}" fill="{tcol}"/>
   <!-- header -->
-  <text x="{x}" y="44" font-size="20" fill="{fg}"><tspan fill="{muted}" font-weight="400">solved.ac/</tspan><tspan font-weight="700" fill="{accent}">{escape(d.handle)}</tspan></text>
-  <text x="{x}" y="70" font-size="13.5" fill="{muted}">{desc}</text>
+  <image x="{x}" y="20" width="131" height="30" href="{logo_uri()}"/>
+  <text x="{x}" y="72" font-size="13.5" fill="{fg}"><tspan fill="{muted}">solved.ac/</tspan><tspan font-weight="700" fill="{accent}">{escape(d.handle)}</tspan><tspan fill="{muted}"> · {desc}</tspan></text>
   <!-- tier pill -->
   <g transform="translate({W - 24 - pill_w},22)">
     <rect width="{pill_w}" height="30" rx="15" fill="{tcol}"/>
