@@ -57,28 +57,40 @@ Inje SC Lab - Master's program<br>
 
 # Tech Stack
 
+> Physical AI 세대의 엔지니어: 시뮬레이션에서 정책을 키우고, 실기로 옮기고, 그 파이프라인을 제품처럼 운영합니다.<br>
+> Sim-to-Real · Embodied RL · VLA · RLOps — 연구와 프로덕션 백엔드를 한 사람이 끝까지 잇는 것이 목표입니다.
+
 ```prisma
 model Sxngt {
-  github    String @default("sxngt")
-  email     String @default("sxngt@icloud.com")
-  threads   String @default("sang._.hn")
-  student   String @default("SC lab AI/Robotics")
-  languages String[] @default(["Go", "Rust", "Python", "TS", "Java"])
+  github    String   @default("sxngt")
+  email     String   @default("sxngt@icloud.com")
+  threads   String   @default("sang._.hn")
+  student   String   @default("Inje SC Lab · AI Convergence Robotics (Ph.D.)")
+  focus     String[] @default(["Physical AI", "Sim-to-Real", "Embodied RL", "VLA", "RLOps"])
+  languages String[] @default(["Python", "Go", "Rust", "TS", "C++"])
 
   model TechStack {
-    backend   String[]
-    infra     String[]
-    database  String[]
-    ai_ml     String[]
+    physical_ai   String[]
+    simulation    String[]
+    robots        String[]
+    rlops         String[]
+    backend       String[]
+    infra         String[]
+    database      String[]
+    ai_ml         String[]
   }
 
   techStack TechStack[] @default(
       [
         TechStack(
-          backend   = ["SpringBoot", "FastAPI", "NestJS", "Fiber"],
-          infra     = ["Docker", "Docker Swarm", "CircleCI", "AWS", "Nginx"],
-          database  = ["PostgreSQL", "MongoDB", "Redis"],
-          ai_ml     = ["Perfect", "MLflow", "Tensorflow", "TensorRT", "ONNX"]
+          physical_ai = ["RSL-RL", "PPO", "SAC", "rl_games", "skrl", "SB3", "RLinf", "VLA"],
+          simulation  = ["Isaac Lab", "Isaac Sim", "MuJoCo", "MuJoCo-Warp", "mjlab", "mink", "Unity / Unreal"],
+          robots      = ["Unitree Go2", "ANYmal D", "FAIRINO FR3", "RB5-850", "SO-ARM", "Meta Quest teleop", "MoveIt / ROS 2"],
+          rlops       = ["k3s", "Argo Workflows", "MLflow", "Ray Tune", "MinIO", "JumpServer", "RTX 4090 ×8"],
+          backend     = ["FastAPI", "uv workspace monorepo", "DDD / Clean Architecture", "SpringBoot", "NestJS", "Fiber"],
+          infra       = ["Docker", "Docker Swarm", "GitHub Actions", "CircleCI", "AWS", "Nginx"],
+          database    = ["PostgreSQL (RLS)", "MongoDB", "Redis", "ChromaDB"],
+          ai_ml       = ["LangGraph", "Hybrid RAG", "MLX (local LLM)", "TensorRT", "ONNX", "TensorFlow"]
         )
       ]
     )
