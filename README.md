@@ -99,6 +99,13 @@ model Sxngt {
 ## CARDS
   [![Solved.ac Profile](https://solvedac-readme-stats.vercel.app/api?handle=injefol&v=2&streak=false)](https://solved.ac/injefol)</a>
   <br>사랑했다 백준.. 다이아 못달고 가서 미안타..<br><br>
+  <a href="https://school.programmers.co.kr/skill_checks">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/programmers-skillcheck-dark.svg">
+      <img alt="Programmers skill check Level 5 (Master)" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/programmers-skillcheck-light.svg" width="480">
+    </picture>
+  </a>
+  <br><br>
   <a href="https://github.com/devxb/gitanimals">
     <img src="https://render.gitanimals.org/farms/sxngt"/>
   </a>
