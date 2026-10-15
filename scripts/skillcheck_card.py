@@ -14,6 +14,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import base64
 import os
 from xml.sax.saxutils import escape
 
@@ -26,6 +27,12 @@ MAX_LEVEL = 5
 TITLE = "Master"
 LOGIN = "sxngt"
 NAME = "윤상현"
+EMBLEM = os.path.join(os.path.dirname(__file__), "..", "assets", "programmers-level5.png")
+
+
+def emblem_uri() -> str:
+    with open(EMBLEM, "rb") as f:
+        return "data:image/png;base64," + base64.b64encode(f.read()).decode()
 
 
 def render(theme: str) -> str:
@@ -41,7 +48,11 @@ def render(theme: str) -> str:
     star_off = "#30363d" if dark else "#d0d7de"
     ok = "#3fb950" if dark else "#1a7f37"
 
-    W, H, x = 480, 168, 24
+    W, x = 480, 24
+    IMG_H = 240
+    H = IMG_H + 168
+    panel = "#161b22" if dark else "#f6f8fa"
+    e = 150
     pill_text = f"Level {LEVEL} · {TITLE}"
     pill_w = 14 + 8 * len(pill_text) + 20
 
@@ -52,11 +63,15 @@ def render(theme: str) -> str:
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Programmers skill check Level {LEVEL} ({TITLE}) for @{LOGIN}">
   <style>text{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}}</style>
   <rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="{bg}" stroke="{border}"/>
+  <clipPath id="top"><rect x="0.5" y="0.5" width="{W - 1}" height="{IMG_H + 10}" rx="10"/></clipPath>
+  <rect clip-path="url(#top)" x="0" y="0" width="{W}" height="{IMG_H}" fill="{panel}"/>
+  <image x="{(W - e) / 2}" y="{(IMG_H - e) / 2}" width="{e}" height="{e}" href="{emblem_uri()}"/>
+  <line x1="0.5" y1="{IMG_H + 0.5}" x2="{W - 0.5}" y2="{IMG_H + 0.5}" stroke="{border}"/>
   <!-- header -->
-  <text x="{x}" y="38" font-size="18" fill="{fg}"><tspan fill="{muted}" font-weight="400">programmers/</tspan><tspan font-weight="700" fill="{accent}">skill-check</tspan></text>
-  <text x="{x}" y="62" font-size="12.5" fill="{muted}">코딩테스트 역량 인증 · {escape(NAME)} (GitHub 연동 계정)</text>
+  <text x="{x}" y="{IMG_H + 38}" font-size="18" fill="{fg}"><tspan fill="{muted}" font-weight="400">programmers/</tspan><tspan font-weight="700" fill="{accent}">skill-check</tspan></text>
+  <text x="{x}" y="{IMG_H + 62}" font-size="12.5" fill="{muted}">코딩테스트 역량 인증 · {escape(NAME)} (GitHub 연동 계정)</text>
   <!-- level pill -->
-  <g transform="translate({W - 24 - pill_w},18)">
+  <g transform="translate({W - 24 - pill_w},{IMG_H + 18})">
     <rect width="{pill_w}" height="26" rx="13" fill="{pill_bg}"/>
     <path transform="translate(11,5)" fill="{pill_fg}" d="{TROPHY}"/>
     <text x="30" y="17.5" font-size="12.5" font-weight="700" fill="{pill_fg}">{pill_text}</text>
@@ -71,6 +86,7 @@ def render(theme: str) -> str:
     <path fill="{ok}" d="{CHECK}" transform="translate(0,-11)"/>
     <text x="22" y="1" font-size="12.5" fill="{fg}">@{LOGIN} · 최고 레벨({TITLE}) 달성 · school.programmers.co.kr</text>
   </g>
+  <rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="none" stroke="{border}"/>
 </svg>
 """
 
