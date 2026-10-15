@@ -47,46 +47,45 @@ def render(theme: str) -> str:
     star_on = "#e3b341"
     star_off = "#30363d" if dark else "#d0d7de"
     ok = "#3fb950" if dark else "#1a7f37"
+    stripe = "#8957e5"
 
-    W, x = 480, 24
-    IMG_H = 240
-    H = IMG_H + 168
-    panel = "#161b22" if dark else "#f6f8fa"
-    e = 150
+    W, H = 480, 168
+    e = 44  # emblem size
+    x = 24 + e + 12  # text column starts right of the emblem
     pill_text = f"Level {LEVEL} · {TITLE}"
-    pill_w = 14 + 8 * len(pill_text) + 20
+    # 12.5px bold ≈ 7.1px per Latin char; "·" counted as one. Symmetric 12px padding.
+    pill_w = 12 + 16 + 6 + round(7.1 * len(pill_text)) + 12
 
     stars = "".join(
-        f'<path transform="translate({x + i * 24},{H - 68})" fill="{star_on if i < LEVEL else star_off}" d="{STAR}"/>'
+        f'<path transform="translate({24 + i * 24},{H - 68})" fill="{star_on if i < LEVEL else star_off}" d="{STAR}"/>'
         for i in range(MAX_LEVEL)
     )
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Programmers skill check Level {LEVEL} ({TITLE}) for @{LOGIN}">
   <style>text{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}}</style>
+  <clipPath id="card"><rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10"/></clipPath>
   <rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="{bg}" stroke="{border}"/>
-  <clipPath id="top"><rect x="0.5" y="0.5" width="{W - 1}" height="{IMG_H + 10}" rx="10"/></clipPath>
-  <rect clip-path="url(#top)" x="0" y="0" width="{W}" height="{IMG_H}" fill="{panel}"/>
-  <image x="{(W - e) / 2}" y="{(IMG_H - e) / 2}" width="{e}" height="{e}" href="{emblem_uri()}"/>
-  <line x1="0.5" y1="{IMG_H + 0.5}" x2="{W - 0.5}" y2="{IMG_H + 0.5}" stroke="{border}"/>
+  <rect clip-path="url(#card)" x="0" y="0" width="6" height="{H}" fill="{stripe}"/>
+  <!-- emblem -->
+  <image x="24" y="18" width="{e}" height="{e}" href="{emblem_uri()}"/>
   <!-- header -->
-  <text x="{x}" y="{IMG_H + 38}" font-size="18" fill="{fg}"><tspan fill="{muted}" font-weight="400">programmers/</tspan><tspan font-weight="700" fill="{accent}">skill-check</tspan></text>
-  <text x="{x}" y="{IMG_H + 62}" font-size="12.5" fill="{muted}">코딩테스트 역량 인증 · {escape(NAME)} (GitHub 연동 계정)</text>
+  <text x="{x}" y="37" font-size="16" fill="{fg}"><tspan fill="{muted}" font-weight="400">programmers/</tspan><tspan font-weight="700" fill="{accent}">skill-check</tspan></text>
+  <text x="{x}" y="62" font-size="12.5" fill="{muted}">코딩테스트 역량 인증 · {escape(NAME)} (GitHub 연동)</text>
   <!-- level pill -->
-  <g transform="translate({W - 24 - pill_w},{IMG_H + 18})">
+  <g transform="translate({W - 24 - pill_w},18)">
     <rect width="{pill_w}" height="26" rx="13" fill="{pill_bg}"/>
-    <path transform="translate(11,5)" fill="{pill_fg}" d="{TROPHY}"/>
-    <text x="30" y="17.5" font-size="12.5" font-weight="700" fill="{pill_fg}">{pill_text}</text>
+    <path transform="translate(12,5)" fill="{pill_fg}" d="{TROPHY}"/>
+    <text x="34" y="17.5" font-size="12.5" font-weight="700" fill="{pill_fg}">{pill_text}</text>
   </g>
   <!-- divider -->
-  <line x1="{x}" y1="{H - 84}" x2="{W - 24}" y2="{H - 84}" stroke="{border}"/>
+  <line x1="24" y1="{H - 84}" x2="{W - 24}" y2="{H - 84}" stroke="{border}"/>
   <!-- level stars -->
   {stars}
-  <text x="{x + MAX_LEVEL * 24 + 6}" y="{H - 55.5}" font-size="13" fill="{fg}" font-weight="600">Level {LEVEL} / {MAX_LEVEL}</text>
+  <text x="{24 + MAX_LEVEL * 24 + 6}" y="{H - 55.5}" font-size="13" fill="{fg}" font-weight="600">Level {LEVEL} / {MAX_LEVEL}</text>
   <!-- footer line -->
-  <g transform="translate({x},{H - 22})">
+  <g transform="translate(24,{H - 22})">
     <path fill="{ok}" d="{CHECK}" transform="translate(0,-11)"/>
     <text x="22" y="1" font-size="12.5" fill="{fg}">@{LOGIN} · 최고 레벨({TITLE}) 달성 · school.programmers.co.kr</text>
   </g>
-  <rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="10" fill="none" stroke="{border}"/>
 </svg>
 """
 

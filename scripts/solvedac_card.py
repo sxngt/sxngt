@@ -123,9 +123,9 @@ def render(d: Card, theme: str) -> str:
     tcol = TIER_COLORS[group]
     W, H, x = 480, 168, 24
     pill_text = f"{name} · {d.rating}"
-    pill_w = 14 + 8 * len(pill_text) + 20 + (18 if d.icon_uri else 0)
+    pill_w = 12 + round(7.1 * len(pill_text)) + 12 + (22 if d.icon_uri else 0)
     pill_icon = f'<image x="10" y="4" width="18" height="18" href="{d.icon_uri}"/>' if d.icon_uri else ""
-    pill_tx = 32 if d.icon_uri else 14
+    pill_tx = 34 if d.icon_uri else 12
     desc = escape(truncate(d.bio, 60)) if d.bio else "Baekjoon Online Judge · solved.ac"
 
     stats = [

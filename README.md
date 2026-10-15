@@ -97,20 +97,27 @@ model Sxngt {
 <div align=center>
   
 ## CARDS
-  <a href="https://solved.ac/profile/injefol">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/solvedac-card-dark.svg">
-      <img alt="solved.ac profile card for injefol" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/solvedac-card-light.svg" width="480">
-    </picture>
-  </a>
-  <br>사랑했다 백준.. 다이아 못달고 가서 미안타..<br><br>
-  <a href="https://school.programmers.co.kr/skill_checks">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/programmers-skillcheck-dark.svg">
-      <img alt="Programmers skill check Level 5 (Master)" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/programmers-skillcheck-light.svg" width="480">
-    </picture>
-  </a>
-  <br><br>
+  <table>
+    <tr>
+      <td align="center" width="50%">
+        <a href="https://solved.ac/profile/injefol">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/solvedac-card-dark.svg">
+            <img alt="solved.ac profile card for injefol" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/solvedac-card-light.svg" width="100%">
+          </picture>
+        </a>
+      </td>
+      <td align="center" width="50%">
+        <a href="https://school.programmers.co.kr/skill_checks">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/programmers-skillcheck-dark.svg">
+            <img alt="Programmers skill check Level 5 (Master)" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/programmers-skillcheck-light.svg" width="100%">
+          </picture>
+        </a>
+      </td>
+    </tr>
+  </table>
+  사랑했다 백준.. 다이아 못달고 가서 미안타..<br><br>
   <a href="https://github.com/devxb/gitanimals">
     <img src="https://render.gitanimals.org/farms/sxngt"/>
   </a>
