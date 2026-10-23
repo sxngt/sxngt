@@ -2,10 +2,10 @@
   "repo": "RLinf/RLinf",
   "url": "https://github.com/RLinf/RLinf",
   "description": "RLinf: Reinforcement Learning Infrastructure for Embodied and Agentic AI",
-  "stars": 5474,
-  "forks": 797,
+  "stars": 5485,
+  "forks": 799,
   "language": "Python",
-  "ogImage": "https://opengraph.githubassets.com/c68034c8a14206508b61781562d81369b80ff43234f4db9fcda20c138c7f27df/RLinf/RLinf",
+  "ogImage": "https://opengraph.githubassets.com/e675f5661e022e5506df453d009aecb99acc4ab1ba44ca8568271a6cca00f29b/RLinf/RLinf",
   "contributor": {
     "login": "sxngt",
     "verified": true,
@@ -13,5 +13,5 @@
     "commits": 2,
     "prsUrl": "https://github.com/RLinf/RLinf/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt"
   },
-  "updatedAt": "2026-10-22T08:44:29+00:00"
+  "updatedAt": "2026-10-23T08:40:10+00:00"
 }
