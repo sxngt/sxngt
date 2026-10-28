@@ -35,6 +35,13 @@ Inje SC Lab - Master's program<br>
 ## Open Source Contributions
   <table>
     <tr>
+      <td align="center" width="50%" colspan="2">
+        <a href="https://github.com/isaac-sim/IsaacLab/pulls?q=is%3Apr+author%3Asxngt">
+          <img alt="isaaclab contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/isaaclab-card-light.svg" width="50%">
+        </a>
+      </td>
+    </tr>
+    <tr>
       <td align="center" width="50%">
         <a href="https://github.com/mujocolab/mjlab/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt">
           <img alt="mjlab contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/mjlab-card-light.svg" width="100%">
@@ -47,9 +54,9 @@ Inje SC Lab - Master's program<br>
       </td>
     </tr>
     <tr>
-      <td align="center" colspan="2">
+      <td align="center" width="50%" colspan="2">
         <a href="https://github.com/RLinf/RLinf/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt">
-          <img alt="RLinf contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/rlinf-card-light.svg" width="50%">
+          <img alt="rlinf contributor card" src="https://raw.githubusercontent.com/sxngt/sxngt/main/assets/rlinf-card-light.svg" width="50%">
         </a>
       </td>
     </tr>

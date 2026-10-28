@@ -11,6 +11,7 @@ permissions:
 env:
   # owner/repo pairs to render a card for; output goes to assets/<repo>-card-*.svg
   CARD_REPOS: |
+    isaac-sim/IsaacLab
     mujocolab/mjlab
     kevinzakka/mink
     RLinf/RLinf

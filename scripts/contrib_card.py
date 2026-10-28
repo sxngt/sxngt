@@ -42,6 +42,7 @@ class CardData:
     is_contributor: bool
     merged_prs: int
     commits: int
+    open_prs: int = 0
     og_data_uri: str = ""
     og_url: str = ""
 
@@ -76,6 +77,8 @@ def fetch(repo: str, login: str, token: str | None) -> CardData:
 
         rp = c.get("/search/issues", params={"q": f"repo:{repo} is:pr is:merged author:{login}", "per_page": 1})
         merged = int(rp.json().get("total_count", 0)) if rp.status_code == 200 else 0
+        ro = c.get("/search/issues", params={"q": f"repo:{repo} is:pr is:open author:{login}", "per_page": 1})
+        open_prs = int(ro.json().get("total_count", 0)) if ro.status_code == 200 else 0
 
     # Repo's social-preview image. If the maintainers uploaded a custom one in
     # repo settings, the page's og:image points to repository-images.githubusercontent.com;
@@ -109,6 +112,7 @@ def fetch(repo: str, login: str, token: str | None) -> CardData:
         is_contributor=is_contributor,
         merged_prs=merged,
         commits=commits,
+        open_prs=open_prs,
     )
 
 
@@ -145,14 +149,30 @@ def render(d: CardData, theme: str) -> str:
 
     owner, name = d.full_name.split("/", 1)
     desc = escape(truncate(d.description, 60))
-    pill_bg, pill_fg, pill_text = (ok_bg, ok_fg, "Contributor") if d.is_contributor else (warn_bg, warn_fg, "Not verified")
+    rev_bg = "#1f6feb" if dark else "#ddf4ff"
+    rev_fg = "#ffffff" if dark else "#0969da"
+    if d.is_contributor or d.merged_prs > 0:
+        pill_bg, pill_fg, pill_text = ok_bg, ok_fg, "Contributor"
+    elif d.open_prs > 0:
+        pill_bg, pill_fg, pill_text = rev_bg, rev_fg, "Under review"
+    else:
+        pill_bg, pill_fg, pill_text = warn_bg, warn_fg, "Not verified"
     pill_w = 14 + 8 * len(pill_text) + 20
 
     stats = [
         (STAR, fmt(d.stars), "#e3b341"),
         (FORK, fmt(d.forks), muted),
     ]
-    contrib_line = f"@{escape(d.login)} · {d.merged_prs} merged PR{'s' if d.merged_prs != 1 else ''} · {d.commits} commit{'s' if d.commits != 1 else ''}"
+    parts = [f"@{escape(d.login)}"]
+    if d.merged_prs:
+        parts.append(f"{d.merged_prs} merged PR{'s' if d.merged_prs != 1 else ''}")
+    if d.open_prs:
+        parts.append(f"{d.open_prs} PR{'s' if d.open_prs != 1 else ''} under review")
+    if d.commits:
+        parts.append(f"{d.commits} commit{'s' if d.commits != 1 else ''}")
+    if len(parts) == 1:
+        parts.append("0 merged PRs")
+    contrib_line = " · ".join(parts)
 
     W = 480
     IMG_H = 240 if d.og_data_uri else 0  # OG image is 1200x600 (2:1)
@@ -216,7 +236,7 @@ def main() -> int:
 
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     data = fetch(args.repo, args.login, token)
-    if not data.is_contributor:
+    if not data.is_contributor and not data.open_prs:
         print(f"warning: {args.login} not found in contributors of {args.repo}", file=sys.stderr)
 
     # Machine-readable copy for external embeds (blogs, React components).
@@ -236,6 +256,7 @@ def main() -> int:
                     "login": data.login,
                     "verified": data.is_contributor,
                     "mergedPrs": data.merged_prs,
+                    "openPrs": data.open_prs,
                     "commits": data.commits,
                     "prsUrl": f"https://github.com/{data.full_name}/pulls?q=is%3Apr+is%3Amerged+author%3A{data.login}",
                 },
