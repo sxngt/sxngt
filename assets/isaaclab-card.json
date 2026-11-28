@@ -2,7 +2,7 @@
   "repo": "isaac-sim/IsaacLab",
   "url": "https://github.com/isaac-sim/IsaacLab",
   "description": "Unified framework for robot learning with multi-physics/renderer support",
-  "stars": 8738,
+  "stars": 8743,
   "forks": 4030,
   "language": "Python",
   "ogImage": "https://repository-images.githubusercontent.com/567038244/f2137db8-ef81-4a1e-b948-019c4b6040d8",
@@ -14,5 +14,5 @@
     "commits": 2,
     "prsUrl": "https://github.com/isaac-sim/IsaacLab/pulls?q=is%3Apr+is%3Amerged+author%3Asxngt"
   },
-  "updatedAt": "2026-11-27T12:43:32+00:00"
+  "updatedAt": "2026-11-28T11:58:21+00:00"
 }
